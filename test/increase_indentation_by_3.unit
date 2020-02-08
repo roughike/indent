@@ -1,0 +1,16 @@
+>>> Increases indentation of single-line string
+Hello World!
+<<<
+   Hello World!
+>>> Increases indentation of multiline string
+Hello
+World!
+<<<
+   Hello
+   World!
+>>> Keeps relative indentation
+    Hello
+  World
+<<<
+       Hello
+     World

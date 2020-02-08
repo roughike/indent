@@ -1,0 +1,32 @@
+>>> Adds 3 space indentation to a single line string
+Please indent me!
+<<<
+   Please indent me!
+>>> Adds 3 space indentation to a multiline string
+Hey you.
+Please.
+Indent.
+Me.
+Thanks.
+<<<
+   Hey you.
+   Please.
+   Indent.
+   Me.
+   Thanks.
+>>> Adds 3 space indentation to an unevenly indented multiline string
+ Hey
+you!
+  Look
+    at
+     this
+   funky
+       indentation!
+<<<
+    Hey
+   you!
+     Look
+       at
+        this
+      funky
+          indentation!

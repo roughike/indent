@@ -14,7 +14,7 @@ world!
   I have indentation, but I'm just a single line
 <<<
 I have indentation, but I'm just a single line
->>> Aligns a multiline string and preserves smallest indentation level
+>>> Aligns a multiline string and keeps relative indentation
    Hey!
         align me
      properly

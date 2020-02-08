@@ -5,44 +5,63 @@ library indent;
 
 import 'dart:convert';
 
-final _indentation = RegExp(r'^(\s+)');
-
 extension IndentedString on String {
-  String indent([int indentationLevel = 0]) =>
-      IndentingStringFormatter(this).indent(indentationLevel);
+  int get indentationLevel =>
+      IndentingStringFormatter(this).findIndentationLevel();
+
+  String stripExtraIndentation() =>
+      IndentingStringFormatter(this).stripExtraIndentation();
+
+  String withIndentationLevel([int indentationLevel = 0]) =>
+      IndentingStringFormatter(this).withIndentationLevel(indentationLevel);
+
+  String increaseIndentationBy(int howMuch) =>
+      IndentingStringFormatter(this).increaseIndentationBy(howMuch);
+
+  String decreaseIndentationBy(int howMuch) =>
+      IndentingStringFormatter(this).decreaseIndentationBy(howMuch);
 }
 
 class IndentingStringFormatter {
   const IndentingStringFormatter(this._value);
   final String _value;
 
-  String indent([int indentationLevel = 0]) {
-    if (_value == null || _value.isEmpty || _value.trim().isEmpty) {
-      return _value;
-    }
-
+  int findIndentationLevel() {
     final lines = _processLines();
-    final smallestIndentationLevel = _findSmallestIndentation(lines);
-    final buffer = StringBuffer();
+    return _findSmallestIndentationLevel(lines);
+  }
 
-    for (final line in lines) {
-      if (line.indentationLevel == 0) {
-        buffer.writeln(line.content);
-        continue;
-      }
+  String withIndentationLevel([int indentationLevel = 0]) {
+    final lines = _processLines();
+    final currentIndentationLevel = _findSmallestIndentationLevel(lines);
+    return _indent(lines, currentIndentationLevel, indentationLevel);
+  }
 
-      final diff = line.indentationLevel - smallestIndentationLevel;
-      final spaces = _generateIndentation(indentationLevel + diff);
+  String stripExtraIndentation() => withIndentationLevel(0);
 
-      buffer
-        ..write(spaces)
-        ..writeln(line.content);
-    }
+  String increaseIndentationBy(int howMuch) {
+    final lines = _processLines();
+    final currentIndentationLevel = _findSmallestIndentationLevel(lines);
+    return _indent(
+      lines,
+      currentIndentationLevel,
+      currentIndentationLevel + howMuch,
+    );
+  }
 
-    return buffer.toString();
+  String decreaseIndentationBy(int howMuch) {
+    final lines = _processLines();
+    final currentIndentationLevel = _findSmallestIndentationLevel(lines);
+    return _indent(
+      lines,
+      currentIndentationLevel,
+      currentIndentationLevel - howMuch,
+    );
   }
 
   Iterable<_Line> _processLines() sync* {
+    if (_valueIsNullOrBlank()) return;
+
     for (final line in LineSplitter.split(_value)) {
       final indentationMatch = _indentation.stringMatch(line);
       final indentationLevel =
@@ -54,10 +73,15 @@ class IndentingStringFormatter {
     }
   }
 
-  int _findSmallestIndentation(Iterable<_Line> lines) {
+  bool _valueIsNullOrBlank() =>
+      _value == null || _value.isEmpty || _value.trim().isEmpty;
+
+  int _findSmallestIndentationLevel(Iterable<_Line> lines) {
     int smallestIndentation;
 
     for (final line in lines) {
+      if (line.content.isEmpty) continue;
+
       if (smallestIndentation == null ||
           line.indentationLevel < smallestIndentation) {
         smallestIndentation = line.indentationLevel;
@@ -67,9 +91,28 @@ class IndentingStringFormatter {
     return smallestIndentation ?? 0;
   }
 
+  String _indent(
+    Iterable<_Line> lines,
+    int currentIndentationLevel,
+    int indentationLevel,
+  ) {
+    final buffer = StringBuffer();
+
+    for (final line in lines) {
+      final diff = line.indentationLevel - currentIndentationLevel;
+      final spaces = _generateIndentation(indentationLevel + diff);
+
+      buffer
+        ..write(spaces)
+        ..writeln(line.content);
+    }
+
+    return buffer.toString();
+  }
+
   String _generateIndentation(int indentationLevel) {
     return indentationLevel > 0
-        ? List.generate(indentationLevel, (_) => ' ').join()
+        ? List.generate(indentationLevel, _spaceGenerator).join()
         : '';
   }
 }
@@ -79,3 +122,6 @@ class _Line {
   final int indentationLevel;
   final String content;
 }
+
+final _indentation = RegExp(r'^(\s+)');
+String _spaceGenerator(int index) => ' ';
