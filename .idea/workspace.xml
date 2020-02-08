@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="c43aa9f8-03f6-448d-a679-5c36f1080a47" name="Default Changelist" comment="" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="ProjectId" id="1XWLj05ojoRY9UfiyRqZWXJEOWR" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showExcludedFiles" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="aspect.path.notification.shown" value="true" />
+    <property name="dart.analysis.tool.window.force.activate" value="false" />
+  </component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/test_fixtures" />
+    </key>
+  </component>
+  <component name="RunManager">
+    <configuration name="tests in indent" type="DartTestRunConfigurationType" factoryName="Dart Test" temporary="true" nameIsGenerated="true">
+      <option name="filePath" value="$PROJECT_DIR$" />
+      <option name="scope" value="FOLDER" />
+      <method v="2" />
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Dart Test.tests in indent" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="ServiceViewManager">
+    <option name="viewStates">
+      <list>
+        <serviceView>
+          <treeState>
+            <expand />
+            <select />
+          </treeState>
+        </serviceView>
+      </list>
+    </option>
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="c43aa9f8-03f6-448d-a679-5c36f1080a47" name="Default Changelist" comment="" />
+      <created>1581157034200</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1581157034200</updated>
+      <workItem from="1581157037584" duration="4439000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="1" />
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="997" y="382" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1581157883080">
+      <screen x="0" y="23" width="1920" height="1057" />
+    </state>
+    <state x="997" y="382" key="#com.intellij.fileTypes.FileTypeChooser/0.23.1920.1057@0.23.1920.1057" timestamp="1581157883080" />
+    <state width="1347" height="290" key="GridCell.Tab.0.bottom" timestamp="1581161737162">
+      <screen x="0" y="23" width="1920" height="1057" />
+    </state>
+    <state width="1347" height="290" key="GridCell.Tab.0.bottom/0.23.1920.1057@0.23.1920.1057" timestamp="1581161737162" />
+    <state width="1347" height="290" key="GridCell.Tab.0.center" timestamp="1581161737161">
+      <screen x="0" y="23" width="1920" height="1057" />
+    </state>
+    <state width="1347" height="290" key="GridCell.Tab.0.center/0.23.1920.1057@0.23.1920.1057" timestamp="1581161737161" />
+    <state width="1347" height="290" key="GridCell.Tab.0.left" timestamp="1581161737161">
+      <screen x="0" y="23" width="1920" height="1057" />
+    </state>
+    <state width="1347" height="290" key="GridCell.Tab.0.left/0.23.1920.1057@0.23.1920.1057" timestamp="1581161737161" />
+    <state width="1347" height="290" key="GridCell.Tab.0.right" timestamp="1581161737161">
+      <screen x="0" y="23" width="1920" height="1057" />
+    </state>
+    <state width="1347" height="290" key="GridCell.Tab.0.right/0.23.1920.1057@0.23.1920.1057" timestamp="1581161737161" />
+    <state x="932" y="279" width="670" height="676" key="search.everywhere.popup" timestamp="1581158243398">
+      <screen x="0" y="23" width="1920" height="1057" />
+    </state>
+    <state x="932" y="279" width="670" height="676" key="search.everywhere.popup/0.23.1920.1057@0.23.1920.1057" timestamp="1581158243398" />
+  </component>
+</project>

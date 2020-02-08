@@ -1,0 +1,36 @@
+>>> Returns an unindented single line string as-is
+Hello there!
+<<<
+Hello there!
+>>> Returns an unindented multiline string as-is
+Hello
+there
+world!
+<<<
+Hello
+there
+world!
+>>> Removes all indentation from a single line string
+  I have indentation, but I'm just a single line
+<<<
+I have indentation, but I'm just a single line
+>>> Aligns a multiline string and preserves smallest indentation level
+   Hey!
+        align me
+     properly
+       pls
+<<<
+Hey!
+     align me
+  properly
+    pls
+>>> Recognizes the smallest indentation level at the end of the string
+     Hey!
+   align me
+     properly
+  pls
+<<<
+   Hey!
+ align me
+   properly
+pls
