@@ -2,15 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="c43aa9f8-03f6-448d-a679-5c36f1080a47" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/lib/src/indentation.dart" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lib/src/string_extensions.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/example/web/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/example/web/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/example/web/main.dart" beforeDir="false" afterPath="$PROJECT_DIR$/example/web/main.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/indent.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/indent.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/test/_indent_test.dart" beforeDir="false" afterPath="$PROJECT_DIR$/test/_indent_test.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/test/with_3_indentation.unit" beforeDir="false" afterPath="$PROJECT_DIR$/test/with_3_indentation.unit" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -82,7 +74,7 @@
       <workItem from="1581157037584" duration="5432000" />
       <workItem from="1581176819828" duration="7257000" />
       <workItem from="1581236145392" duration="903000" />
-      <workItem from="1581239664943" duration="3611000" />
+      <workItem from="1581239664943" duration="3939000" />
     </task>
     <servers />
   </component>
