@@ -1,5 +1,5 @@
-/// Utilities for changing indentation in a [String] while preserving existing
-/// relative indentation.
+/// Utilities for changing indentation in a [String], while preserving the
+/// existing relative indentation.
 library indent;
 
 export 'src/indentation.dart';

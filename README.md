@@ -1,22 +1,11 @@
-A library for Dart developers.
+# indent
 
-Created from templates made available by Stagehand under a BSD-style
-[license](https://github.com/dart-lang/stagehand/blob/master/LICENSE).
+[![pub package](https://img.shields.io/pub/v/indent.svg)](https://pub.dartlang.org/packages/indent)
+ [![Build Status](https://travis-ci.org/roughike/indent.svg?branch=master)](https://travis-ci.org/roughike/indent) 
+ [![Coverage Status](https://coveralls.io/repos/github/roughike/indent/badge.svg?branch=master)](https://coveralls.io/github/roughike/indent?branch=master)
 
-## Usage
+Utilities for changing indentation in a String for Dart while preserving relative indentation.
 
-A simple usage example:
+A GIF speaks more than a thousand words:
 
-```dart
-import 'package:indent/indentation.dart';
-
-main() {
-  var awesome = new Awesome();
-}
-```
-
-## Features and bugs
-
-Please file feature requests and bugs at the [issue tracker][tracker].
-
-[tracker]: http://example.com/issues/replaceme
+**TODO**
