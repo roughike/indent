@@ -1,31 +1,37 @@
+import 'dart:async';
 import 'dart:html';
 
 import 'package:indent/indent.dart';
 
 void main() {
   final TextAreaElement text = document.getElementById('text');
-  _updateIndentationLevelInfo(text);
-  text.onKeyUp
-      .listen((e) => _updateIndentationLevelInfo(e.target as TextAreaElement));
-  text.onChange
-      .listen((e) => _updateIndentationLevelInfo(e.target as TextAreaElement));
+  _startMonitoringIndentationLevel(text);
 
   text.value = text.value.withIndentationLevel(10);
 
   document.getElementById('decrease').onClick.listen((_) {
-    text.value = text.value.decreaseIndentationBy(1);
+    text.value = text.value.indentBy(-1);
   });
 
   document.getElementById('increase').onClick.listen((_) {
-    text.value = text.value.increaseIndentationBy(1);
+    text.value = text.value.indentBy(1);
   });
 
   document.getElementById('strip-extra-indent').onClick.listen((_) {
-    text.value = text.value.stripExtraIndentation();
+    text.value = text.value.unindent();
+  });
+
+  document.getElementById('with-ten-indentation').onClick.listen((_) {
+    text.value = text.value.withIndentationLevel(10);
   });
 }
 
-void _updateIndentationLevelInfo(TextAreaElement text) {
-  document.getElementById('indentation-level').innerText =
-      text.value.indentationLevel.toString();
+void _startMonitoringIndentationLevel(TextAreaElement text) {
+  // Yup, you should not do this in real world. This is just a lazy
+  // quick hack in an example app of a string indentation library.
+  // Don't come at me, you!
+  Timer.periodic(const Duration(milliseconds: 100), (_) {
+    document.getElementById('indentation-level').innerText =
+        text.value.getIndentationLevel().toString();
+  });
 }

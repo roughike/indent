@@ -2,21 +2,15 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="c43aa9f8-03f6-448d-a679-5c36f1080a47" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/example/pubspec.yaml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/example/web/index.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/test/_indent_test.dart" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/test/decrease_indentation_by_3.unit" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/test/increase_indentation_by_3.unit" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/test/indentation_level_counts.unit" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/test/with_3_indentation.unit" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Dart_Packages.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Dart_Packages.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib/src/indentation.dart" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib/src/string_extensions.dart" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/example/indent_example.dart" beforeDir="false" afterPath="$PROJECT_DIR$/example/web/main.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/indent.iml" beforeDir="false" afterPath="$PROJECT_DIR$/indent.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/example/web/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/example/web/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/example/web/main.dart" beforeDir="false" afterPath="$PROJECT_DIR$/example/web/main.dart" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/lib/indent.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/indent.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/test/indent_test.dart" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/test/with_0_indentation.unit" beforeDir="false" afterPath="$PROJECT_DIR$/test/with_0_indentation.unit" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/test/_indent_test.dart" beforeDir="false" afterPath="$PROJECT_DIR$/test/_indent_test.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/test/with_3_indentation.unit" beforeDir="false" afterPath="$PROJECT_DIR$/test/with_3_indentation.unit" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -42,12 +36,13 @@
     <property name="last_opened_file_path" value="$PROJECT_DIR$/test" />
   </component>
   <component name="RecentsManager">
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$/test" />
-    </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/lib/src" />
       <recent name="$PROJECT_DIR$/example/web" />
       <recent name="$PROJECT_DIR$/test_fixtures" />
+    </key>
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/test" />
     </key>
   </component>
   <component name="RunManager">
@@ -85,7 +80,9 @@
       <option name="presentableId" value="Default" />
       <updated>1581157034200</updated>
       <workItem from="1581157037584" duration="5432000" />
-      <workItem from="1581176819828" duration="7132000" />
+      <workItem from="1581176819828" duration="7257000" />
+      <workItem from="1581236145392" duration="903000" />
+      <workItem from="1581239664943" duration="3611000" />
     </task>
     <servers />
   </component>
@@ -93,26 +90,35 @@
     <option name="version" value="1" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="997" y="382" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1581157883080">
+    <state x="997" y="382" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1581236808630">
       <screen x="0" y="23" width="1920" height="1057" />
     </state>
-    <state x="997" y="382" key="#com.intellij.fileTypes.FileTypeChooser/0.23.1920.1057@0.23.1920.1057" timestamp="1581157883080" />
-    <state width="1477" height="290" key="GridCell.Tab.0.bottom" timestamp="1581183964058">
-      <screen x="0" y="23" width="1920" height="1057" />
+    <state x="997" y="382" key="#com.intellij.fileTypes.FileTypeChooser/0.23.1920.1057@0.23.1920.1057" timestamp="1581236808630" />
+    <state width="1638" height="280" key="GridCell.Tab.0.bottom" timestamp="1581243505612">
+      <screen x="0" y="23" width="1680" height="1027" />
     </state>
-    <state width="1477" height="290" key="GridCell.Tab.0.bottom/0.23.1920.1057@0.23.1920.1057" timestamp="1581183964058" />
-    <state width="1477" height="290" key="GridCell.Tab.0.center" timestamp="1581183964057">
-      <screen x="0" y="23" width="1920" height="1057" />
+    <state width="1638" height="280" key="GridCell.Tab.0.bottom/0.23.1680.1027@0.23.1680.1027" timestamp="1581243505612" />
+    <state width="1477" height="290" key="GridCell.Tab.0.bottom/0.23.1920.1057@0.23.1920.1057" timestamp="1581184126948" />
+    <state width="1638" height="280" key="GridCell.Tab.0.center" timestamp="1581243505611">
+      <screen x="0" y="23" width="1680" height="1027" />
     </state>
-    <state width="1477" height="290" key="GridCell.Tab.0.center/0.23.1920.1057@0.23.1920.1057" timestamp="1581183964057" />
-    <state width="1477" height="290" key="GridCell.Tab.0.left" timestamp="1581183964057">
-      <screen x="0" y="23" width="1920" height="1057" />
+    <state width="1638" height="280" key="GridCell.Tab.0.center/0.23.1680.1027@0.23.1680.1027" timestamp="1581243505611" />
+    <state width="1477" height="290" key="GridCell.Tab.0.center/0.23.1920.1057@0.23.1920.1057" timestamp="1581184126947" />
+    <state width="1638" height="280" key="GridCell.Tab.0.left" timestamp="1581243505610">
+      <screen x="0" y="23" width="1680" height="1027" />
     </state>
-    <state width="1477" height="290" key="GridCell.Tab.0.left/0.23.1920.1057@0.23.1920.1057" timestamp="1581183964057" />
-    <state width="1477" height="290" key="GridCell.Tab.0.right" timestamp="1581183964057">
-      <screen x="0" y="23" width="1920" height="1057" />
+    <state width="1638" height="280" key="GridCell.Tab.0.left/0.23.1680.1027@0.23.1680.1027" timestamp="1581243505610" />
+    <state width="1477" height="290" key="GridCell.Tab.0.left/0.23.1920.1057@0.23.1920.1057" timestamp="1581184126946" />
+    <state width="1638" height="280" key="GridCell.Tab.0.right" timestamp="1581243505612">
+      <screen x="0" y="23" width="1680" height="1027" />
     </state>
-    <state width="1477" height="290" key="GridCell.Tab.0.right/0.23.1920.1057@0.23.1920.1057" timestamp="1581183964057" />
+    <state width="1638" height="280" key="GridCell.Tab.0.right/0.23.1680.1027@0.23.1680.1027" timestamp="1581243505612" />
+    <state width="1477" height="290" key="GridCell.Tab.0.right/0.23.1920.1057@0.23.1920.1057" timestamp="1581184126947" />
+    <state x="746" y="374" key="com.intellij.ide.util.TipDialog" timestamp="1581239690334">
+      <screen x="0" y="23" width="1680" height="1027" />
+    </state>
+    <state x="746" y="374" key="com.intellij.ide.util.TipDialog/0.23.1680.1027@0.23.1680.1027" timestamp="1581239690334" />
+    <state x="853" y="384" key="com.intellij.ide.util.TipDialog/0.23.1920.1057@0.23.1920.1057" timestamp="1581236170595" />
     <state x="932" y="279" width="670" height="676" key="search.everywhere.popup" timestamp="1581158243398">
       <screen x="0" y="23" width="1920" height="1057" />
     </state>

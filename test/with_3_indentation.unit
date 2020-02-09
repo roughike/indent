@@ -30,3 +30,17 @@ you!
         this
       funky
           indentation!
+>>> Decreases indentation accordingly if it's bigger than wanted
+            Hello
+          World
+<<<
+     Hello
+   World
+>>> Does not add indentation to empty lines
+Hello
+
+World
+<<<
+   Hello
+
+   World

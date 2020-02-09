@@ -4,11 +4,12 @@
 </head>
 <body>
 <div>
-    <button id="decrease">-</button>
-    <button id="increase">+</button>
-    <button id="strip-extra-indent">strip extra indentation</button>
+    <button id="decrease">indentBy(-1)</button>
+    <button id="increase">indentBy(1)</button>
+    <button id="strip-extra-indent">unindent()</button>
+    <button id="with-ten-indentation">withIndentationLevel(10)</button>
 </div>
-<p>indentation level: <strong id="indentation-level">--</strong></p>
+<p>getIndentationLevel(): <strong id="indentation-level">--</strong></p>
 <br/>
 <textarea id="text" rows="20" cols="50" style="font-size: 18px">
 

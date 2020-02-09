@@ -7,27 +7,20 @@ import 'package:indent/indent.dart';
 void main() {
   _runDatacase(
     'indentation_level_counts',
-    (input) => input.indentationLevel,
+    (input) => input.getIndentationLevel(),
     (output) => int.parse(output),
   );
 
   // withIndentationLevel(0) and stripExtraIndentation are the same thing
   _runDatacase('with_0_indentation', (input) => input.withIndentationLevel(0));
-  _runDatacase('with_0_indentation', (input) => input.stripExtraIndentation());
+  _runDatacase('with_0_indentation', (input) => input.unindent());
   _runDatacase(
     'with_3_indentation',
     (input) => input.withIndentationLevel(3),
   );
 
-  _runDatacase(
-    'increase_indentation_by_3',
-    (input) => input.increaseIndentationBy(3),
-  );
-
-  _runDatacase(
-    'decrease_indentation_by_3',
-    (input) => input.decreaseIndentationBy(3),
-  );
+  _runDatacase('increase_indentation_by_3', (input) => input.indentBy(3));
+  _runDatacase('decrease_indentation_by_3', (input) => input.indentBy(-3));
 
   test('does not count empty line as indentation', () {
     expect(
@@ -35,15 +28,15 @@ void main() {
     
         Hello World!
     '''
-          .indentationLevel,
+          .getIndentationLevel(),
       8,
     );
   });
 
   test('null, empty, and blank inputs', () {
-    expect(null.withIndentationLevel(), '');
-    expect(''.withIndentationLevel(), equals(''));
-    expect('    '.withIndentationLevel(), equals(''));
+    expect(null.withIndentationLevel(0), '');
+    expect(''.withIndentationLevel(0), equals(''));
+    expect('    '.withIndentationLevel(0), equals(''));
   });
 }
 
