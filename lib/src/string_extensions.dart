@@ -15,7 +15,7 @@ extension IndentedString on String {
   ///
   /// the indentation level is 1, because the line with " World" has the least
   /// amount of leading whitespace.
-  int getIndentationLevel() => Indentation(this).getIndentationLevel();
+  int getIndentationLevel() => Indentation(this).getLevel();
 
   /// Returns this string with all extra indentation stripped while preserving
   /// the relative indentation.
@@ -32,7 +32,7 @@ extension IndentedString on String {
   /// there
   ///    World
   ///
-  /// Calling [unindent] is equivalent of calling [withIndentationLevel] with
+  /// Calling [unindent] is equivalent of calling [indent] with
   /// the value of 0.
   String unindent() => Indentation(this).unindent();
 
@@ -61,8 +61,8 @@ extension IndentedString on String {
   ///
   ///     Hello
   ///    World
-  String withIndentationLevel(int indentationLevel) =>
-      Indentation(this).withLevel(indentationLevel);
+  String indent(int indentationLevel) =>
+      Indentation(this).indent(indentationLevel);
 
   /// Returns this string with indentation level changed by [howMuch].
   ///

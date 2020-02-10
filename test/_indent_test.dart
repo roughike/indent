@@ -12,12 +12,9 @@ void main() {
   );
 
   // withIndentationLevel(0) and stripExtraIndentation are the same thing
-  _runDatacase('with_0_indentation', (input) => input.withIndentationLevel(0));
+  _runDatacase('with_0_indentation', (input) => input.indent(0));
   _runDatacase('with_0_indentation', (input) => input.unindent());
-  _runDatacase(
-    'with_3_indentation',
-    (input) => input.withIndentationLevel(3),
-  );
+  _runDatacase('with_3_indentation', (input) => input.indent(3));
 
   _runDatacase('increase_indentation_by_3', (input) => input.indentBy(3));
   _runDatacase('decrease_indentation_by_3', (input) => input.indentBy(-3));
@@ -34,9 +31,9 @@ void main() {
   });
 
   test('null, empty, and blank inputs', () {
-    expect(null.withIndentationLevel(0), '');
-    expect(''.withIndentationLevel(0), equals(''));
-    expect('    '.withIndentationLevel(0), equals(''));
+    expect(null.indent(0), '');
+    expect(''.indent(0), equals(''));
+    expect('    '.indent(0), equals(''));
   });
 }
 

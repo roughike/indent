@@ -22,7 +22,7 @@ class Indentation {
   ///
   /// the indentation level is 1, because the line with " World" has the least
   /// amount of leading whitespace.
-  int getIndentationLevel() {
+  int getLevel() {
     final lines = _processLines();
     return _findSmallestIndentationLevel(lines);
   }
@@ -42,8 +42,8 @@ class Indentation {
   /// there
   ///    World
   ///
-  /// Calling [unindent] is equivalent of calling [withLevel] with the value of 0.
-  String unindent() => withLevel(0);
+  /// Calling [unindent] is equivalent of calling [indent] with the value of 0.
+  String unindent() => indent(0);
 
   /// Returns [_value] with [indentationLevel] applied while preserving relative
   /// indentation.
@@ -70,7 +70,7 @@ class Indentation {
   ///
   ///     Hello
   ///    World
-  String withLevel(int indentationLevel) {
+  String indent(int indentationLevel) {
     final lines = _processLines();
     final currentIndentationLevel = _findSmallestIndentationLevel(lines);
     return _indent(lines, currentIndentationLevel, indentationLevel);

@@ -7,7 +7,7 @@ void main() {
   final TextAreaElement text = document.getElementById('text');
   _startMonitoringIndentationLevel(text);
 
-  text.value = text.value.withIndentationLevel(10);
+  text.value = text.value.indent(10);
 
   document.getElementById('decrease').onClick.listen((_) {
     text.value = text.value.indentBy(-1);
@@ -22,7 +22,7 @@ void main() {
   });
 
   document.getElementById('with-ten-indentation').onClick.listen((_) {
-    text.value = text.value.withIndentationLevel(10);
+    text.value = text.value.indent(10);
   });
 }
 
