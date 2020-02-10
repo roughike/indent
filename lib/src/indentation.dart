@@ -2,10 +2,10 @@ import 'dart:convert';
 
 import 'package:indent/indent.dart';
 
-/// Utilities for changing indentation in a [String] while preserving existing
-/// relative indentation.
+/// Change indentation in a [String] while preserving existing relative
+/// indentation.
 ///
-/// See also [IndentedString] in string_extensions.dart.
+/// For easier usage, see [IndentedString] in string_extensions.dart.
 class Indentation {
   const Indentation(this._value);
   final String _value;
@@ -24,7 +24,7 @@ class Indentation {
   /// amount of leading whitespace.
   int getLevel() {
     final lines = _processLines();
-    return _findSmallestIndentationLevel(lines);
+    return _findCommonIndentationLevel(lines);
   }
 
   /// Returns [_value] with all extra indentation stripped while preserving
@@ -72,7 +72,7 @@ class Indentation {
   ///    World
   String indent(int indentationLevel) {
     final lines = _processLines();
-    final currentIndentationLevel = _findSmallestIndentationLevel(lines);
+    final currentIndentationLevel = _findCommonIndentationLevel(lines);
     return _indent(lines, currentIndentationLevel, indentationLevel);
   }
 
@@ -101,7 +101,7 @@ class Indentation {
   /// World
   String indentBy(int howMuch) {
     final lines = _processLines();
-    final currentIndentationLevel = _findSmallestIndentationLevel(lines);
+    final currentIndentationLevel = _findCommonIndentationLevel(lines);
     return _indent(
       lines,
       currentIndentationLevel,
@@ -113,7 +113,7 @@ class Indentation {
   // unindented contents of each line.
   //
   // This is to avoid having to find the indentation level two times per line:
-  // first time in the "find smallest indentation level" loop, and second time
+  // first time in the "find common indentation level" loop, and second time
   // in the loop that applies the indentation.
   Iterable<_Line> _processLines() sync* {
     if (_valueIsNullOrBlank()) return;
@@ -132,22 +132,22 @@ class Indentation {
   bool _valueIsNullOrBlank() =>
       _value == null || _value.isEmpty || _value.trim().isEmpty;
 
-  int _findSmallestIndentationLevel(Iterable<_Line> lines) {
-    int smallestIndentation;
+  int _findCommonIndentationLevel(Iterable<_Line> lines) {
+    int commonIndentationLevel;
 
     for (final line in lines) {
       // Empty or blank lines do not have indentation.
       if (line.content.isEmpty) continue;
 
-      if (smallestIndentation == null ||
-          line.indentationLevel < smallestIndentation) {
-        // If the smallest indentation level is not found yet, or if we found a
+      if (commonIndentationLevel == null ||
+          line.indentationLevel < commonIndentationLevel) {
+        // If the common indentation level is not found yet, or if we found a
         // smaller level than the previous one, we update it.
-        smallestIndentation = line.indentationLevel;
+        commonIndentationLevel = line.indentationLevel;
       }
     }
 
-    return smallestIndentation ?? 0;
+    return commonIndentationLevel ?? 0;
   }
 
   String _indent(

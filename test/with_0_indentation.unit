@@ -24,7 +24,7 @@ Hey!
      align me
   properly
     pls
->>> Recognizes the smallest indentation level at the end of the string
+>>> Recognizes the common indentation level at the end of the string
      Hey!
    align me
      properly
