@@ -6,11 +6,11 @@
 
 Change indentation in multiline Dart strings while preserving the existing relative indentation.
 
-A
-
-GIF speaks more than a thousand words:
+A GIF speaks more than a thousand words:
 
 ![A screencast of the example app in action](https://github.com/roughike/indent/raw/master/indent.gif)
+
+You can run the example app yourself by running `cd example && pub get && webdev serve` from the project root.
 
 ## Features
 
@@ -77,27 +77,33 @@ also prints:
   World
 ```
 
+<small>(calling `indent(0)` is equal to calling `unindent()`.)</small>
+
 ### indentBy(int howMuch)
 
 Changes the indentation level in a string by `howMuch`.
+
+A positive value for `howMuch` adds indentation.
 
 For example, this:
 
 ```dart
 print('''
+   Hello
+World
+'''.indentBy(4));
+```
+
+prints this:
+
+```
        Hello
     World
-'''.indentBy(2));
 ```
 
-prints:
+When a negative value for `howMuch` is given, indentation is removed accordingly.
 
-```
-       Hello
-    World
-```
-
-while this:
+This:
 
 ```dart
 print('''
@@ -106,9 +112,24 @@ print('''
 '''.indentBy(-4));
 ```
 
-prints:
+prints this:
 
 ```
    Hello
 World
 ```
+
+### getIndentationLevel()
+
+Returns the common indentation level in a string.
+
+For example, this:
+
+```dart
+final int indentationLevel= '''
+     Hello
+  World
+'''.getIndentationLevel();
+```
+
+returns `2` as the two spaces before `  World` is the lowest common indentation in the string.
