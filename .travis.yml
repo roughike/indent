@@ -1,0 +1,7 @@
+language: dart
+dart:
+  - stable
+script:
+  - pub get
+  - pub run test
+  - ./tool/coveralls.sh
