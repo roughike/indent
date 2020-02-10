@@ -4,7 +4,7 @@
  [![Build Status](https://travis-ci.org/roughike/indent.svg?branch=master)](https://travis-ci.org/roughike/indent) 
  [![Coverage Status](https://coveralls.io/repos/github/roughike/indent/badge.svg?branch=master)](https://coveralls.io/github/roughike/indent?branch=master)
 
-Utilities for changing indentation in a String for Dart while preserving relative indentation.
+Change indentation in a Dart String while preserving relative indentation.
 
 An ugly optimized GIF speaks more than a thousand words:
 
