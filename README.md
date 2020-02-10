@@ -12,7 +12,11 @@ A GIF speaks more than a thousand words:
 
 You can run [the example app](https://github.com/roughike/indent/tree/master/example/web) yourself by running `cd example && pub get && webdev serve` from the project root.
 
-## Features
+## Usage
+
+For convenience, the library adds the following extension members on Dart's `String` class.
+
+You can also wrap a string with the `Indentation` class and call methods on that - this is what [the extension methods](https://github.com/roughike/indent/blob/master/lib/src/string_extensions.dart) do under the hood.
 
 ### unindent()
 
@@ -22,6 +26,8 @@ It's the use case this library was originally created for.
 For example, this:
 
 ```dart
+import 'package:indent/indent.dart';
+
 print('''
           Hello
         there
@@ -46,6 +52,8 @@ Indents a string with the desired indentation level while preserving relative in
 For example, this:
 
 ```dart
+import 'package:indent/indent.dart';
+
 print('''
    Hello
 World
@@ -64,6 +72,8 @@ If the starting indentation level is higher than the desired one, the value will
 This:
 
 ```dart
+import 'package:indent/indent.dart';
+
 print('''
           Hello
        World
@@ -88,6 +98,8 @@ A positive value for `howMuch` adds indentation.
 For example, this:
 
 ```dart
+import 'package:indent/indent.dart';
+
 print('''
    Hello
 World
@@ -106,6 +118,8 @@ When a negative value for `howMuch` is given, indentation is removed accordingly
 This:
 
 ```dart
+import 'package:indent/indent.dart';
+
 print('''
        Hello
     World
@@ -126,6 +140,8 @@ Returns the common indentation level in a string.
 For example, this:
 
 ```dart
+import 'package:indent/indent.dart';
+
 final int indentationLevel= '''
      Hello
   World
