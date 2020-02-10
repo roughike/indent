@@ -10,7 +10,7 @@ A GIF speaks more than a thousand words:
 
 ![A screencast of the example app in action](https://github.com/roughike/indent/raw/master/indent.gif)
 
-You can run the example app yourself by running `cd example && pub get && webdev serve` from the project root.
+You can run [the example app](https://github.com/roughike/indent/tree/master/example/web) yourself by running `cd example && pub get && webdev serve` from the project root.
 
 ## Features
 
