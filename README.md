@@ -6,6 +6,28 @@
 
 Utilities for changing indentation in a String for Dart while preserving relative indentation.
 
-A GIF speaks more than a thousand words:
+An ugly optimized GIF speaks more than a thousand words:
 
 ![A screencast of the example app in action](https://github.com/roughike/indent/raw/master/indent.gif)
+
+## Methods
+
+If you found this library from a Google search, you're probably looking for the `unindent()` method. It's a little similar to Java 12's `align()`, or maybe Scala's `stripMargin()`. I wouldn't know though.
+
+Here's what `unindent` does:
+
+```dart
+final unindented = const Indentation('''
+          Hello
+        there
+             World!
+''').unindent();
+```
+
+becomes:
+
+```
+  Hello
+there
+     World!
+```
