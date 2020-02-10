@@ -8,4 +8,4 @@ Utilities for changing indentation in a String for Dart while preserving relativ
 
 A GIF speaks more than a thousand words:
 
-**TODO**
+![A screencast of the example app in action](https://github.com/roughike/indent/raw/master/indent.gif)
