@@ -177,9 +177,14 @@ class Indentation {
 
   // Generates an appropriate amount of spaces for the desired indentation level.
   String _generateIndentation(int indentationLevel) {
-    return indentationLevel > 0
-        ? List.generate(indentationLevel, _spaceGenerator).join()
-        : '';
+    if (indentationLevel == 0) return '';
+
+    final buffer = StringBuffer();
+    for (var i = 0; i < indentationLevel; i++) {
+      buffer.write(_indentation);
+    }
+
+    return buffer.toString();
   }
 }
 
@@ -194,7 +199,5 @@ class _Line {
   final String content;
 }
 
-// This is a top-level function to avoid redefining an anonymous inner function
-// for every line in the input string.
-String _spaceGenerator(int index) => ' ';
+const _indentation = ' ';
 final _whitespace = RegExp(r'^(\s+)');
