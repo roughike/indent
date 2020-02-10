@@ -2,7 +2,7 @@
 if [ "$COVERALLS_TOKEN" ] && [ "$TRAVIS_DART_VERSION" = "stable" ]; then
   echo "Running coverage..."
   pub global activate dart_coveralls
-  dart dart_coveralls report \
+  dart_coveralls report \
     --retry 2 \
     --exclude-test-files \
     --throw-on-error \
