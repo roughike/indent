@@ -7,10 +7,10 @@ import 'package:indent/indent.dart';
 ///
 /// For easier usage, see [IndentedString] in string_extensions.dart.
 class Indentation {
-  const Indentation(this._value);
-  final String _value;
+  const Indentation(this._input);
+  final String _input;
 
-  /// Returns the indentation level of [_value].
+  /// Returns the indentation level of [_input].
   ///
   /// An indentation level is determined by finding a non-empty line with the
   /// least amount of leading whitespace.
@@ -27,7 +27,7 @@ class Indentation {
     return _findCommonIndentationLevel(lines);
   }
 
-  /// Returns [_value] with all extra indentation stripped while preserving
+  /// Returns [_input] with all extra indentation stripped while preserving
   /// relative indentation.
   ///
   /// For example, the input:
@@ -45,7 +45,7 @@ class Indentation {
   /// Calling [unindent] is equivalent of calling [indent] with the value of 0.
   String unindent() => indent(0);
 
-  /// Returns [_value] with [indentationLevel] applied while preserving relative
+  /// Returns [_input] with [indentationLevel] applied while preserving relative
   /// indentation.
   ///
   /// For example, the input:
@@ -76,7 +76,7 @@ class Indentation {
     return _indent(lines, currentIndentationLevel, indentationLevel);
   }
 
-  /// Returns [_value] with indentation level changed by [howMuch].
+  /// Returns [_input] with indentation level changed by [howMuch].
   ///
   /// For example, the input:
   ///
@@ -109,6 +109,32 @@ class Indentation {
     );
   }
 
+  String trimMargin([String marginPrefix = '|']) {
+    if (_inputIsNullOrBlank()) return _input;
+
+    assert(marginPrefix != null);
+    final buffer = StringBuffer();
+
+    for (final line in LineSplitter.split(_input)) {
+      if (line.isEmpty || line.trim().isEmpty) {
+        continue;
+      }
+
+      var result = line;
+      final trimmedLine = line.trimLeft();
+
+      if (trimmedLine.length < line.length) {
+        if (trimmedLine.startsWith(marginPrefix)) {
+          result = trimmedLine.replaceFirst(marginPrefix, '');
+        }
+      }
+
+      buffer.writeln(result);
+    }
+
+    return buffer.toString();
+  }
+
   // Turns the string into _Line classes that contain the indentation level and
   // unindented contents of each line.
   //
@@ -116,9 +142,9 @@ class Indentation {
   // first time in the "find common indentation level" loop, and second time
   // in the loop that applies the indentation.
   Iterable<_Line> _processLines() sync* {
-    if (_valueIsNullOrBlank()) return;
+    if (_inputIsNullOrBlank()) return;
 
-    for (final line in LineSplitter.split(_value)) {
+    for (final line in LineSplitter.split(_input)) {
       final indentationMatch = _whitespace.stringMatch(line);
       final indentationLevel =
           indentationMatch != null && indentationMatch.isNotEmpty
@@ -129,8 +155,8 @@ class Indentation {
     }
   }
 
-  bool _valueIsNullOrBlank() =>
-      _value == null || _value.isEmpty || _value.trim().isEmpty;
+  bool _inputIsNullOrBlank() =>
+      _input == null || _input.isEmpty || _input.trim().isEmpty;
 
   int _findCommonIndentationLevel(Iterable<_Line> lines) {
     int commonIndentationLevel;

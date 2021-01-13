@@ -2,7 +2,7 @@ import 'indentation.dart';
 
 /// Extension methods for easier indentation of strings while preserving relative
 /// indentation.
-extension IndentedString on String {
+extension StringIndentation on String {
   /// Returns the indentation level of this string.
   ///
   /// An indentation level is determined by finding a non-empty line with the
@@ -88,4 +88,7 @@ extension IndentedString on String {
   ///  Hello
   /// World
   String indentBy(int howMuch) => Indentation(this).indentBy(howMuch);
+
+  String trimMargin([String marginPrefix = '|']) =>
+      Indentation(this).trimMargin(marginPrefix);
 }
