@@ -1,16 +1,14 @@
 import 'dart:convert';
 
-import 'package:indent/indent.dart';
-
 /// Change indentation in a [String] while preserving existing relative
 /// indentation.
 ///
 /// For easier usage, see [IndentedString] in string_extensions.dart.
 class Indentation {
-  const Indentation(this._value);
-  final String _value;
+  const Indentation(this._input);
+  final String _input;
 
-  /// Returns the indentation level of [_value].
+  /// Returns the indentation level of [_input].
   ///
   /// An indentation level is determined by finding a non-empty line with the
   /// least amount of leading whitespace.
@@ -27,7 +25,7 @@ class Indentation {
     return _findCommonIndentationLevel(lines);
   }
 
-  /// Returns [_value] with all extra indentation stripped while preserving
+  /// Returns [_input] with all extra indentation stripped while preserving
   /// relative indentation.
   ///
   /// For example, the input:
@@ -45,7 +43,7 @@ class Indentation {
   /// Calling [unindent] is equivalent of calling [indent] with the value of 0.
   String unindent() => indent(0);
 
-  /// Returns [_value] with [indentationLevel] applied while preserving relative
+  /// Returns [_input] with [indentationLevel] applied while preserving relative
   /// indentation.
   ///
   /// For example, the input:
@@ -76,7 +74,7 @@ class Indentation {
     return _indent(lines, currentIndentationLevel, indentationLevel);
   }
 
-  /// Returns [_value] with indentation level changed by [howMuch].
+  /// Returns [_input] with indentation level changed by [howMuch].
   ///
   /// For example, the input:
   ///
@@ -109,6 +107,57 @@ class Indentation {
     );
   }
 
+  /// Returns [_input], but trims leading whitespace characters followed by the
+  /// given [marginPrefix] from each line.
+  ///
+  /// Also removes the first and last lines if they are blank, i.e. they only
+  /// contain whitespace characters.
+  ///
+  /// For example, given that the [marginPrefix] is "|" (the default), the input:
+  ///
+  ///       |   Hello
+  ///       | there
+  ///       |    World
+  ///
+  /// will become:
+  ///
+  ///    Hello
+  ///  there
+  ///     World
+  ///
+  /// Leaves lines that don't contain [marginPrefix] untouched.
+  String trimMargin([String marginPrefix = '|']) {
+    if (_inputIsNullOrBlank()) return _input;
+
+    final lines = LineSplitter.split(_input);
+    final buffer = StringBuffer();
+    var i = -1;
+
+    for (final line in lines) {
+      i++;
+
+      var result = line;
+      final leftTrimmedLine = line.trimLeft();
+
+      if ((i == 0 || i == lines.length - 1) &&
+          leftTrimmedLine.trimRight().isEmpty) {
+        // If this is the first or the last line, and it's just whitespace, we
+        // want to skip it.
+        continue;
+      }
+
+      if (leftTrimmedLine.length <= line.length) {
+        if (leftTrimmedLine.startsWith(marginPrefix)) {
+          result = leftTrimmedLine.replaceFirst(marginPrefix, '');
+        }
+      }
+
+      buffer.writeln(result);
+    }
+
+    return buffer.toString();
+  }
+
   // Turns the string into _Line classes that contain the indentation level and
   // unindented contents of each line.
   //
@@ -116,9 +165,9 @@ class Indentation {
   // first time in the "find common indentation level" loop, and second time
   // in the loop that applies the indentation.
   Iterable<_Line> _processLines() sync* {
-    if (_valueIsNullOrBlank()) return;
+    if (_inputIsNullOrBlank()) return;
 
-    for (final line in LineSplitter.split(_value)) {
+    for (final line in LineSplitter.split(_input)) {
       final indentationMatch = _whitespace.stringMatch(line);
       final indentationLevel =
           indentationMatch != null && indentationMatch.isNotEmpty
@@ -129,8 +178,8 @@ class Indentation {
     }
   }
 
-  bool _valueIsNullOrBlank() =>
-      _value == null || _value.isEmpty || _value.trim().isEmpty;
+  bool _inputIsNullOrBlank() =>
+      _input == null || _input.isEmpty || _input.trim().isEmpty;
 
   int _findCommonIndentationLevel(Iterable<_Line> lines) {
     int commonIndentationLevel;

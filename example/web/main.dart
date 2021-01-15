@@ -24,6 +24,10 @@ void main() {
   document.getElementById('with-ten-indentation').onClick.listen((_) {
     text.value = text.value.indent(10);
   });
+
+  document.getElementById('trim-margin').onClick.listen((_) {
+    text.value = text.value.trimMargin('|');
+  });
 }
 
 void _startMonitoringIndentationLevel(TextAreaElement text) {

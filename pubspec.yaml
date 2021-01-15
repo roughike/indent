@@ -1,6 +1,6 @@
 name: indent
 description: Change indentation in multiline Dart strings while preserving the existing relative indentation.
-version: 1.0.0+2
+version: 1.1.0
 homepage: https://github.com/roughike/indent
 
 environment:
@@ -8,5 +8,6 @@ environment:
 
 dev_dependencies:
   expected_output: ^1.2.2
+  lint: ^1.0.0
   pedantic: ^1.8.0
   test: ^1.6.0

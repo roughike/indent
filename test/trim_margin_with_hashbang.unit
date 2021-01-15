@@ -1,0 +1,54 @@
+>>>
+    #!Tell me and I forget.
+    #!Teach me and I remember.
+    #!Involve me and I learn.
+    #!(Benjamin Franklin)
+<<<
+Tell me and I forget.
+Teach me and I remember.
+Involve me and I learn.
+(Benjamin Franklin)
+>>>
+    #!Tell me and I forget.
+ #!Teach me and I remember.
+   #!Involve me and I learn.
+  #!(Benjamin Franklin)
+<<<
+Tell me and I forget.
+Teach me and I remember.
+Involve me and I learn.
+(Benjamin Franklin)
+>>> preserves leading whitespace for lines not containing marginPrefix
+    #!Tell me and I forget.
+ #!Teach me and I remember.
+   Involve me and I learn.
+  #!(Benjamin Franklin)
+<<<
+Tell me and I forget.
+Teach me and I remember.
+   Involve me and I learn.
+(Benjamin Franklin)
+>>> trims first and last lines if they are blank
+
+    #!Tell me and I forget.
+    #!Teach me and I remember.
+    #!Involve me and I learn.
+    #!(Benjamin Franklin)
+
+<<<
+Tell me and I forget.
+Teach me and I remember.
+Involve me and I learn.
+(Benjamin Franklin)
+>>> trims marginPrefix even without preceding whitespace
+
+#!Tell me and I forget.
+#!Teach me and I remember.
+#!Involve me and I learn.
+#!(Benjamin Franklin)
+
+<<<
+Tell me and I forget.
+Teach me and I remember.
+Involve me and I learn.
+(Benjamin Franklin)

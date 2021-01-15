@@ -2,7 +2,7 @@ import 'indentation.dart';
 
 /// Extension methods for easier indentation of strings while preserving relative
 /// indentation.
-extension IndentedString on String {
+extension StringIndentation on String {
   /// Returns the indentation level of this string.
   ///
   /// An indentation level is determined by finding a non-empty line with the
@@ -88,4 +88,26 @@ extension IndentedString on String {
   ///  Hello
   /// World
   String indentBy(int howMuch) => Indentation(this).indentBy(howMuch);
+
+  /// Returns this string, but trims leading whitespace characters followed by the
+  /// given [marginPrefix] from each line.
+  ///
+  /// Also removes the first and last lines if they are blank, i.e. they only
+  /// contain whitespace characters.
+  ///
+  /// For example, given that the [marginPrefix] is "|" (the default), the input:
+  ///
+  ///       |   Hello
+  ///       | there
+  ///       |    World
+  ///
+  /// will become:
+  ///
+  ///    Hello
+  ///  there
+  ///     World
+  ///
+  /// Leaves lines that don't contain [marginPrefix] untouched.
+  String trimMargin([String marginPrefix = '|']) =>
+      Indentation(this).trimMargin(marginPrefix);
 }

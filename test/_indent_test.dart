@@ -5,19 +5,23 @@ import 'package:test/test.dart';
 import 'package:indent/indent.dart';
 
 void main() {
-  _runDatacase(
+  _runDataCase(
     'indentation_level_counts',
     (input) => input.getIndentationLevel(),
     (output) => int.parse(output),
   );
 
   // withIndentationLevel(0) and stripExtraIndentation are the same thing
-  _runDatacase('with_0_indentation', (input) => input.indent(0));
-  _runDatacase('with_0_indentation', (input) => input.unindent());
-  _runDatacase('with_3_indentation', (input) => input.indent(3));
+  _runDataCase('with_0_indentation', (input) => input.indent(0));
+  _runDataCase('with_0_indentation', (input) => input.unindent());
+  _runDataCase('with_3_indentation', (input) => input.indent(3));
 
-  _runDatacase('increase_indentation_by_3', (input) => input.indentBy(3));
-  _runDatacase('decrease_indentation_by_3', (input) => input.indentBy(-3));
+  _runDataCase('increase_indentation_by_3', (input) => input.indentBy(3));
+  _runDataCase('decrease_indentation_by_3', (input) => input.indentBy(-3));
+
+  _runDataCase('trim_margin_with_pipe', (input) => input.trimMargin());
+  _runDataCase('trim_margin_with_pipe', (input) => input.trimMargin('|'));
+  _runDataCase('trim_margin_with_hashbang', (input) => input.trimMargin('#!'));
 
   test('does not count empty line as indentation', () {
     expect(
@@ -37,7 +41,7 @@ void main() {
   });
 }
 
-void _runDatacase(
+void _runDataCase(
   String filename,
   dynamic Function(String) inputTransformer, [
   dynamic Function(String) outputTransformer,
