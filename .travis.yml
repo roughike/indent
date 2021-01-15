@@ -1,7 +1,21 @@
 language: dart
-dart:
-  - stable
+dist: xenial
+addons:
+  apt:
+    packages:
+      - lib32stdc++6
+
+install:
+  - git clone https://github.com/flutter/flutter.git -b stable
+  - ./flutter/bin/flutter doctor
+  - gem install coveralls-lcov
+
 script:
-  - pub get
-  - pub run test
-  - ./tool/coveralls.sh
+  - ./flutter/bin/flutter test --coverage
+
+after_success:
+  - coveralls-lcov coverage/lcov.info
+
+cache:
+  directories:
+    - $HOME/.pub-cache
