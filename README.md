@@ -45,6 +45,32 @@ there
 
 It gets rid of the common indentation while preserving the relative indentation. This is like [Kotlin's trimIndent()](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.text/trim-indent.html) or Java 12's `align()`.
 
+### trimMargin([String marginPrefix = '|'])
+
+Trims the leading whitespace followed by the `marginPrefix` from each line.
+
+For example, this:
+
+```dart
+import 'package:indent/indent.dart';
+
+print('''
+        |  Hello
+        |there
+        |    World!
+'''.trimMargin());
+```
+
+outputs this:
+
+```
+  Hello
+there
+    World!
+```
+
+Behaves just like [trimMargin in Kotlin](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.text/trim-margin.html).
+
 ### indent(int indentationLevel)
 
 Indents a string with the desired indentation level while preserving relative indentation.

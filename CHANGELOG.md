@@ -1,3 +1,7 @@
+## 1.1.0
+
+* Adds `trimMargin()` method that behaves like Kotlin's trimMargin.
+
 ## 1.0.0+2
 
 * "performance improvements" - replace `List.generate(indentationLevel)` with a `StringBuffer` and a for loop. Nobody will probably notice the difference, but go ahead and enjoy the performance improvement of a couple Planck times anyway.

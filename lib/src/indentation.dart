@@ -1,7 +1,5 @@
 import 'dart:convert';
 
-import 'package:indent/indent.dart';
-
 /// Change indentation in a [String] while preserving existing relative
 /// indentation.
 ///
@@ -109,23 +107,48 @@ class Indentation {
     );
   }
 
+  /// Returns [_input], but trims leading whitespace characters followed by the
+  /// given [marginPrefix] from each line.
+  ///
+  /// Also removes the first and last lines if they are blank, i.e. they only
+  /// contain whitespace characters.
+  ///
+  /// For example, given that the [marginPrefix] is "|" (the default), the input:
+  ///
+  ///       |   Hello
+  ///       | there
+  ///       |    World
+  ///
+  /// will become:
+  ///
+  ///    Hello
+  ///  there
+  ///     World
+  ///
+  /// Leaves lines that don't contain [marginPrefix] untouched.
   String trimMargin([String marginPrefix = '|']) {
     if (_inputIsNullOrBlank()) return _input;
 
-    assert(marginPrefix != null);
+    final lines = LineSplitter.split(_input);
     final buffer = StringBuffer();
+    var i = -1;
 
-    for (final line in LineSplitter.split(_input)) {
-      if (line.isEmpty || line.trim().isEmpty) {
+    for (final line in lines) {
+      i++;
+
+      var result = line;
+      final leftTrimmedLine = line.trimLeft();
+
+      if ((i == 0 || i == lines.length - 1) &&
+          leftTrimmedLine.trimRight().isEmpty) {
+        // If this is the first or the last line, and it's just whitespace, we
+        // want to skip it.
         continue;
       }
 
-      var result = line;
-      final trimmedLine = line.trimLeft();
-
-      if (trimmedLine.length < line.length) {
-        if (trimmedLine.startsWith(marginPrefix)) {
-          result = trimmedLine.replaceFirst(marginPrefix, '');
+      if (leftTrimmedLine.length <= line.length) {
+        if (leftTrimmedLine.startsWith(marginPrefix)) {
+          result = leftTrimmedLine.replaceFirst(marginPrefix, '');
         }
       }
 
