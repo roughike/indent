@@ -1,3 +1,8 @@
+## 2.0.0
+
+* Set minimum SDK version to >=2.12.0
+* Migrate to null-safety
+
 ## 1.1.0
 
 * Adds `trimMargin()` method that behaves like Kotlin's trimMargin.

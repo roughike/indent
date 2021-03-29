@@ -20,6 +20,7 @@ void main() {
   _runDataCase('decrease_indentation_by_3', (input) => input.indentBy(-3));
 
   _runDataCase('trim_margin_with_pipe', (input) => input.trimMargin());
+  // ignore: avoid_redundant_argument_values
   _runDataCase('trim_margin_with_pipe', (input) => input.trimMargin('|'));
   _runDataCase('trim_margin_with_hashbang', (input) => input.trimMargin('#!'));
 
@@ -34,8 +35,7 @@ void main() {
     );
   });
 
-  test('null, empty, and blank inputs', () {
-    expect(null.indent(0), '');
+  test('empty and blank inputs', () {
     expect(''.indent(0), equals(''));
     expect('    '.indent(0), equals(''));
   });
@@ -44,14 +44,14 @@ void main() {
 void _runDataCase(
   String filename,
   dynamic Function(String) inputTransformer, [
-  dynamic Function(String) outputTransformer,
+  dynamic Function(String)? outputTransformer,
 ]) {
   for (final dataCase in dataCasesInFile(path: 'test/$filename.unit')) {
     outputTransformer ??= (output) => output;
 
     test(dataCase.description, () {
       final actual = inputTransformer(dataCase.input);
-      final expected = outputTransformer(dataCase.expectedOutput);
+      final expected = outputTransformer!(dataCase.expectedOutput);
       expect(actual, equals(expected));
     });
   }
