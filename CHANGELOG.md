@@ -1,7 +1,6 @@
 ## 2.0.0
 
-* Set minimum SDK version to >=2.12.0
-* Migrate to null-safety
+* Migrate to null-safety & set minimum SDK version to >=2.12.0
 
 ## 1.1.0
 
