@@ -127,7 +127,7 @@ class Indentation {
   ///
   /// Leaves lines that don't contain [marginPrefix] untouched.
   String trimMargin([String marginPrefix = '|']) {
-    if (_inputIsNullOrBlank()) return _input;
+    if (_inputIsBlank()) return _input;
 
     final lines = LineSplitter.split(_input);
     final buffer = StringBuffer();
@@ -165,7 +165,7 @@ class Indentation {
   // first time in the "find common indentation level" loop, and second time
   // in the loop that applies the indentation.
   Iterable<_Line> _processLines() sync* {
-    if (_inputIsNullOrBlank()) return;
+    if (_inputIsBlank()) return;
 
     for (final line in LineSplitter.split(_input)) {
       final indentationMatch = _whitespace.stringMatch(line);
@@ -178,11 +178,10 @@ class Indentation {
     }
   }
 
-  bool _inputIsNullOrBlank() =>
-      _input == null || _input.isEmpty || _input.trim().isEmpty;
+  bool _inputIsBlank() => _input.isEmpty || _input.trim().isEmpty;
 
   int _findCommonIndentationLevel(Iterable<_Line> lines) {
-    int commonIndentationLevel;
+    int? commonIndentationLevel;
 
     for (final line in lines) {
       // Empty or blank lines do not have indentation.
